@@ -1,0 +1,238 @@
+[
+    {
+        "name": "Basil",
+        "latin_name": "Ocimum basilicum",
+        "family": "Lamiaceae",
+        "genus": "Ocimum",
+        "species": "O. basilicum",
+        "common_names": "Sweet Basil",
+        "description": "Fragrant culinary herb with green leaves, widely used in cooking.",
+        "botanical_description": "Annual herb with green ovate leaves, small white flowers, and a distinctive aroma.",
+        "category": "herb",
+        "plant_type": "annual",
+        "growth_habit": "upright",
+        "native_region": "Tropical Asia",
+        "height_min_cm": 30,
+        "height_max_cm": 60,
+        "width_min_cm": 20,
+        "width_max_cm": 40,
+        "bloom_time": "summer",
+        "flower_color": "white",
+        "leaf_characteristics": {
+            "shape": "ovate",
+            "arrangement": "opposite",
+            "margin": "entire"
+        },
+        "flower_characteristics": {
+            "type": "spike",
+            "diameter_cm": 0.5,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "nutlet",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed",
+            "cutting"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/a/a1/Basil-Basilico-Ocimum_basilicum-albahaca.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Thyme",
+        "latin_name": "Thymus vulgaris",
+        "family": "Lamiaceae",
+        "genus": "Thymus",
+        "species": "T. vulgaris",
+        "common_names": "Common Thyme",
+        "description": "Low-growing aromatic herb used in cooking and medicine.",
+        "botanical_description": "Small perennial shrub with woody stems, small aromatic leaves, and pink flowers.",
+        "category": "herb",
+        "plant_type": "perennial",
+        "growth_habit": "clumping",
+        "native_region": "Mediterranean",
+        "height_min_cm": 15,
+        "height_max_cm": 30,
+        "width_min_cm": 20,
+        "width_max_cm": 40,
+        "bloom_time": "summer",
+        "flower_color": "pink",
+        "leaf_characteristics": {
+            "shape": "linear",
+            "arrangement": "opposite",
+            "margin": "entire"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 0.5,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "nutlet",
+            "edibility": "edible"
+        },
+        "bark_type": "woody",
+        "foliage_type": "evergreen",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "cutting",
+            "division",
+            "seed"
+        ],
+        "image_url": null,
+        "images": [
+            null,
+            null
+        ]
+    },
+    {
+        "name": "Mint",
+        "latin_name": "Mentha spicata",
+        "family": "Lamiaceae",
+        "genus": "Mentha",
+        "species": "M. spicata",
+        "common_names": "Spearmint",
+        "description": "Fragrant herb with serrated leaves, used in teas and cooking.",
+        "botanical_description": "Perennial herb with creeping rhizomes, bright green leaves, and spikes of lilac flowers.",
+        "category": "herb",
+        "plant_type": "perennial",
+        "growth_habit": "spreading",
+        "native_region": "Europe and Asia",
+        "height_min_cm": 30,
+        "height_max_cm": 100,
+        "width_min_cm": 30,
+        "width_max_cm": 90,
+        "bloom_time": "summer",
+        "flower_color": "lilac",
+        "leaf_characteristics": {
+            "shape": "ovate",
+            "arrangement": "opposite",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "spike",
+            "diameter_cm": 0.5,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "nutlet",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "division",
+            "cutting"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Mentha_spicata_-_Köhler–s_Medizinal-Pflanzen-094.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/49/Mentha_spicata_-_Köhler–s_Medizinal-Pflanzen-094.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Rosemary",
+        "latin_name": "Salvia rosmarinus",
+        "family": "Lamiaceae",
+        "genus": "Salvia",
+        "species": "S. rosmarinus",
+        "common_names": "Rosemary",
+        "description": "Woody herb with aromatic needle-like leaves.",
+        "botanical_description": "Evergreen shrub with narrow, fragrant leaves and blue flowers.",
+        "category": "herb",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Mediterranean",
+        "height_min_cm": 50,
+        "height_max_cm": 200,
+        "width_min_cm": 40,
+        "width_max_cm": 120,
+        "bloom_time": "spring",
+        "flower_color": "blue",
+        "leaf_characteristics": {
+            "shape": "linear",
+            "arrangement": "opposite",
+            "margin": "entire"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 1,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "nutlet",
+            "edibility": "edible"
+        },
+        "bark_type": "woody",
+        "foliage_type": "evergreen",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "cutting",
+            "layering",
+            "seed"
+        ],
+        "image_url": null,
+        "images": [
+            null,
+            null
+        ]
+    },
+    {
+        "name": "Parsley",
+        "latin_name": "Petroselinum crispum",
+        "family": "Apiaceae",
+        "genus": "Petroselinum",
+        "species": "P. crispum",
+        "common_names": "Garden Parsley",
+        "description": "Biennial herb with curly or flat leaves used in cooking.",
+        "botanical_description": "Biennial plant with bright green leaves and small yellow-green flowers.",
+        "category": "herb",
+        "plant_type": "biennial",
+        "growth_habit": "rosette",
+        "native_region": "Mediterranean",
+        "height_min_cm": 20,
+        "height_max_cm": 60,
+        "width_min_cm": 20,
+        "width_max_cm": 40,
+        "bloom_time": "summer",
+        "flower_color": "yellow-green",
+        "leaf_characteristics": {
+            "shape": "compound",
+            "arrangement": "basal",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "umbel",
+            "diameter_cm": 5,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "schizocarp",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Parsley.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/7/7e/Parsley.jpg",
+            null
+        ]
+    }
+]

@@ -104,7 +104,14 @@ new class extends Component {
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             @forelse($plants as $plant)
                 <div class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-
+                    @if($plant->image_url)
+                        <img src="{{ $plant->image_url }}" alt="{{ $plant->name }}"
+                             class="w-full h-48 object-cover">
+                    @else
+                        <div class="w-full h-48 bg-zinc-200 flex items-center justify-center">
+                            <span class="text-zinc-500">Kein Bild</span>
+                        </div>
+                    @endif
 
                     <div class="p-4">
                         <h3 class="font-semibold text-lg mb-1">{{ $plant->name }}</h3>

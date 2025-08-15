@@ -1,0 +1,234 @@
+[
+    {
+        "name": "Oak",
+        "latin_name": "Quercus robur",
+        "family": "Fagaceae",
+        "genus": "Quercus",
+        "species": "Q. robur",
+        "common_names": "English Oak",
+        "description": "Large deciduous tree known for its strength and longevity.",
+        "botanical_description": "Broad, rounded crown with lobed leaves and acorns as fruit.",
+        "category": "tree",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Europe",
+        "height_min_cm": 1500,
+        "height_max_cm": 4000,
+        "width_min_cm": 800,
+        "width_max_cm": 2000,
+        "bloom_time": "spring",
+        "flower_color": "yellow-green",
+        "leaf_characteristics": {
+            "shape": "lobed",
+            "arrangement": "alternate",
+            "margin": "smooth"
+        },
+        "flower_characteristics": {
+            "type": "catkin",
+            "diameter_cm": 0.5,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "acorn",
+            "edibility": "edible after processing"
+        },
+        "bark_type": "rough",
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/6e/Oak_tree.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/6e/Oak_tree.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Apple Tree",
+        "latin_name": "Malus domestica",
+        "family": "Rosaceae",
+        "genus": "Malus",
+        "species": "M. domestica",
+        "common_names": "Apple",
+        "description": "Fruit tree cultivated for sweet, edible apples.",
+        "botanical_description": "Medium-sized deciduous tree with ovate leaves and fragrant white to pink blossoms.",
+        "category": "tree",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Central Asia",
+        "height_min_cm": 200,
+        "height_max_cm": 900,
+        "width_min_cm": 200,
+        "width_max_cm": 500,
+        "bloom_time": "spring",
+        "flower_color": "white",
+        "leaf_characteristics": {
+            "shape": "ovate",
+            "arrangement": "alternate",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "single",
+            "diameter_cm": 4,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "pome",
+            "edibility": "edible"
+        },
+        "bark_type": "smooth when young, rough when old",
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "grafting",
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/1/15/Apple_tree.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/15/Apple_tree.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Birch",
+        "latin_name": "Betula pendula",
+        "family": "Betulaceae",
+        "genus": "Betula",
+        "species": "B. pendula",
+        "common_names": "Silver Birch",
+        "description": "Slender deciduous tree with white bark and delicate leaves.",
+        "botanical_description": "Graceful tree with papery bark and drooping branches.",
+        "category": "tree",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Europe, Asia",
+        "height_min_cm": 1000,
+        "height_max_cm": 2500,
+        "width_min_cm": 400,
+        "width_max_cm": 1000,
+        "bloom_time": "spring",
+        "flower_color": "yellow-green",
+        "leaf_characteristics": {
+            "shape": "triangular",
+            "arrangement": "alternate",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "catkin",
+            "diameter_cm": 0.3,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "nutlet",
+            "edibility": "non-edible"
+        },
+        "bark_type": "papery white",
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Betula_pendula.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/4f/Betula_pendula.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Maple",
+        "latin_name": "Acer platanoides",
+        "family": "Sapindaceae",
+        "genus": "Acer",
+        "species": "A. platanoides",
+        "common_names": "Norway Maple",
+        "description": "Large shade tree with distinctive lobed leaves.",
+        "botanical_description": "Deciduous tree producing paired winged seeds and yellow spring flowers.",
+        "category": "tree",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Europe, Western Asia",
+        "height_min_cm": 1000,
+        "height_max_cm": 3000,
+        "width_min_cm": 500,
+        "width_max_cm": 1200,
+        "bloom_time": "spring",
+        "flower_color": "yellow",
+        "leaf_characteristics": {
+            "shape": "palmate",
+            "arrangement": "opposite",
+            "margin": "lobed"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 0.5,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "samara",
+            "edibility": "non-edible"
+        },
+        "bark_type": "furrowed",
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acer_platanoides.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acer_platanoides.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Cherry Blossom",
+        "latin_name": "Prunus serrulata",
+        "family": "Rosaceae",
+        "genus": "Prunus",
+        "species": "P. serrulata",
+        "common_names": "Japanese Cherry",
+        "description": "Ornamental tree famous for its pink blossoms.",
+        "botanical_description": "Small deciduous tree with serrated leaves and showy pink flowers in clusters.",
+        "category": "tree",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Japan, Korea, China",
+        "height_min_cm": 400,
+        "height_max_cm": 1000,
+        "width_min_cm": 300,
+        "width_max_cm": 800,
+        "bloom_time": "spring",
+        "flower_color": "pink",
+        "leaf_characteristics": {
+            "shape": "ovate",
+            "arrangement": "alternate",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 4,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "drupe",
+            "edibility": "edible (not usually eaten)"
+        },
+        "bark_type": "smooth",
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "grafting",
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/60/Cherry_blossom.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/60/Cherry_blossom.jpg",
+            null
+        ]
+    }
+]

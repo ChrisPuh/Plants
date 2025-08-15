@@ -1,0 +1,220 @@
+[
+    {
+        "name": "Lavender",
+        "latin_name": "Lavandula angustifolia",
+        "family": "Lamiaceae",
+        "genus": "Lavandula",
+        "species": "L. angustifolia",
+        "common_names": "English Lavender",
+        "description": "Aromatic evergreen shrub valued for its fragrant purple flowers.",
+        "botanical_description": "Compact shrub with linear leaves and spikes of fragrant purple flowers.",
+        "category": "shrub",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Mediterranean",
+        "height_min_cm": 30,
+        "height_max_cm": 100,
+        "width_min_cm": 30,
+        "width_max_cm": 80,
+        "bloom_time": "summer",
+        "flower_color": "purple",
+        "leaf_characteristics": {
+            "shape": "linear",
+            "arrangement": "opposite",
+            "margin": "smooth"
+        },
+        "flower_characteristics": {
+            "type": "spike",
+            "diameter_cm": 1,
+            "fragrance": true
+        },
+        "fruit_characteristics": null,
+        "bark_type": null,
+        "foliage_type": "evergreen",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "cutting",
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/ae/Lavandula_angustifolia.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/a/ae/Lavandula_angustifolia.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Boxwood",
+        "latin_name": "Buxus sempervirens",
+        "family": "Buxaceae",
+        "genus": "Buxus",
+        "species": "B. sempervirens",
+        "common_names": "Common Box",
+        "description": "Dense evergreen shrub often used for hedges and topiary.",
+        "botanical_description": "Small-leaved shrub with dense branching and evergreen foliage.",
+        "category": "shrub",
+        "plant_type": "perennial",
+        "growth_habit": "clumping",
+        "native_region": "Europe, North Africa, Asia",
+        "height_min_cm": 50,
+        "height_max_cm": 600,
+        "width_min_cm": 50,
+        "width_max_cm": 400,
+        "bloom_time": "spring",
+        "flower_color": "yellow-green",
+        "leaf_characteristics": {
+            "shape": "elliptic",
+            "arrangement": "opposite",
+            "margin": "smooth"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 0.3,
+            "fragrance": false
+        },
+        "fruit_characteristics": null,
+        "bark_type": "smooth",
+        "foliage_type": "evergreen",
+        "is_edible": false,
+        "is_toxic": true,
+        "propagation_methods": [
+            "cutting"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Buxus_sempervirens.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/0/0a/Buxus_sempervirens.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Hydrangea",
+        "latin_name": "Hydrangea macrophylla",
+        "family": "Hydrangeaceae",
+        "genus": "Hydrangea",
+        "species": "H. macrophylla",
+        "common_names": "Bigleaf Hydrangea",
+        "description": "Flowering shrub with large colorful blooms that change color based on soil pH.",
+        "botanical_description": "Deciduous shrub producing spherical clusters of flowers in blue, pink, or white.",
+        "category": "shrub",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Japan",
+        "height_min_cm": 100,
+        "height_max_cm": 200,
+        "width_min_cm": 100,
+        "width_max_cm": 200,
+        "bloom_time": "summer",
+        "flower_color": "blue, pink, or white",
+        "leaf_characteristics": {
+            "shape": "ovate",
+            "arrangement": "opposite",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 20,
+            "fragrance": false
+        },
+        "fruit_characteristics": null,
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": true,
+        "propagation_methods": [
+            "cutting"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/2/24/Hydrangea_macrophylla.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/2/24/Hydrangea_macrophylla.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Forsythia",
+        "latin_name": "Forsythia × intermedia",
+        "family": "Oleaceae",
+        "genus": "Forsythia",
+        "species": null,
+        "common_names": "Border Forsythia",
+        "description": "Deciduous shrub with bright yellow flowers in early spring.",
+        "botanical_description": "Arching stems with opposite leaves and clusters of yellow four-petaled flowers.",
+        "category": "shrub",
+        "plant_type": "perennial",
+        "growth_habit": "spreading",
+        "native_region": "Eastern Asia",
+        "height_min_cm": 150,
+        "height_max_cm": 300,
+        "width_min_cm": 150,
+        "width_max_cm": 300,
+        "bloom_time": "spring",
+        "flower_color": "yellow",
+        "leaf_characteristics": {
+            "shape": "ovate",
+            "arrangement": "opposite",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 3,
+            "fragrance": false
+        },
+        "fruit_characteristics": null,
+        "bark_type": "smooth",
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "cutting",
+            "layering"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Forsythia_intermedia.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/d/d4/Forsythia_intermedia.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Rosemary",
+        "latin_name": "Salvia rosmarinus",
+        "family": "Lamiaceae",
+        "genus": "Salvia",
+        "species": "S. rosmarinus",
+        "common_names": "Rosemary",
+        "description": "Aromatic evergreen shrub with needle-like leaves, used in cooking.",
+        "botanical_description": "Woody-stemmed shrub with fragrant leaves and small blue flowers.",
+        "category": "shrub",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Mediterranean",
+        "height_min_cm": 50,
+        "height_max_cm": 200,
+        "width_min_cm": 50,
+        "width_max_cm": 150,
+        "bloom_time": "spring",
+        "flower_color": "blue",
+        "leaf_characteristics": {
+            "shape": "linear",
+            "arrangement": "opposite",
+            "margin": "smooth"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 1,
+            "fragrance": true
+        },
+        "fruit_characteristics": null,
+        "bark_type": "woody",
+        "foliage_type": "evergreen",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "cutting",
+            "layering"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/74/Rosemary.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/7/74/Rosemary.jpg",
+            null
+        ]
+    }
+]

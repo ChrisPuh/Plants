@@ -1,0 +1,237 @@
+[
+    {
+        "name": "Rose",
+        "latin_name": "Rosa",
+        "family": "Rosaceae",
+        "genus": "Rosa",
+        "species": null,
+        "common_names": "Garden Rose",
+        "description": "Classic ornamental plant known for its fragrant, colorful blooms.",
+        "botanical_description": "Perennial flowering shrub with thorny stems, pinnate leaves, and showy flowers in various colors.",
+        "category": "flower",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Asia, Europe, North America",
+        "height_min_cm": 50,
+        "height_max_cm": 300,
+        "width_min_cm": 50,
+        "width_max_cm": 200,
+        "bloom_time": "spring-summer",
+        "flower_color": "red, pink, white, yellow",
+        "leaf_characteristics": {
+            "shape": "pinnate",
+            "arrangement": "alternate",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "single or double",
+            "diameter_cm": 5,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "hip",
+            "edibility": "edible when processed"
+        },
+        "bark_type": "thorny",
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "cutting",
+            "grafting",
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Red_rose.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/b/bf/Red_rose.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Sunflower",
+        "latin_name": "Helianthus annuus",
+        "family": "Asteraceae",
+        "genus": "Helianthus",
+        "species": "H. annuus",
+        "common_names": "Common Sunflower",
+        "description": "Tall annual plant with large yellow flower heads that follow the sun.",
+        "botanical_description": "Annual with rough, hairy stems, broad leaves, and large composite flower heads with yellow ray florets.",
+        "category": "flower",
+        "plant_type": "annual",
+        "growth_habit": "upright",
+        "native_region": "North America",
+        "height_min_cm": 150,
+        "height_max_cm": 300,
+        "width_min_cm": 30,
+        "width_max_cm": 80,
+        "bloom_time": "summer",
+        "flower_color": "yellow",
+        "leaf_characteristics": {
+            "shape": "cordate",
+            "arrangement": "alternate",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "composite",
+            "diameter_cm": 30,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "achene",
+            "edibility": "edible seeds"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/40/Sunflower_sky_backdrop.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/40/Sunflower_sky_backdrop.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Tulip",
+        "latin_name": "Tulipa",
+        "family": "Liliaceae",
+        "genus": "Tulipa",
+        "species": null,
+        "common_names": "Tulip",
+        "description": "Spring-blooming perennial with cup-shaped flowers in a variety of colors.",
+        "botanical_description": "Bulbous plant with strap-shaped leaves and showy cup-shaped flowers.",
+        "category": "flower",
+        "plant_type": "perennial",
+        "growth_habit": "upright",
+        "native_region": "Central Asia, Turkey",
+        "height_min_cm": 10,
+        "height_max_cm": 70,
+        "width_min_cm": 10,
+        "width_max_cm": 30,
+        "bloom_time": "spring",
+        "flower_color": "various",
+        "leaf_characteristics": {
+            "shape": "linear",
+            "arrangement": "basal",
+            "margin": "entire"
+        },
+        "flower_characteristics": {
+            "type": "cup",
+            "diameter_cm": 8,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "capsule",
+            "edibility": "not edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": false,
+        "is_toxic": true,
+        "propagation_methods": [
+            "bulb division",
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/a/a6/Tulip_-_floriade_canberra.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/a/a6/Tulip_-_floriade_canberra.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Lavender",
+        "latin_name": "Lavandula angustifolia",
+        "family": "Lamiaceae",
+        "genus": "Lavandula",
+        "species": "L. angustifolia",
+        "common_names": "English Lavender",
+        "description": "Aromatic perennial with purple flowers, popular in gardens and aromatherapy.",
+        "botanical_description": "Woody shrub with narrow leaves and spikes of fragrant purple flowers.",
+        "category": "flower",
+        "plant_type": "perennial",
+        "growth_habit": "clumping",
+        "native_region": "Mediterranean",
+        "height_min_cm": 30,
+        "height_max_cm": 90,
+        "width_min_cm": 30,
+        "width_max_cm": 90,
+        "bloom_time": "summer",
+        "flower_color": "purple",
+        "leaf_characteristics": {
+            "shape": "linear",
+            "arrangement": "opposite",
+            "margin": "entire"
+        },
+        "flower_characteristics": {
+            "type": "spike",
+            "diameter_cm": 0.5,
+            "fragrance": true
+        },
+        "fruit_characteristics": {
+            "type": "nutlet",
+            "edibility": "not edible"
+        },
+        "bark_type": "woody",
+        "foliage_type": "evergreen",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "cutting",
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/69/Lavandula_angustifolia_1.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/6/69/Lavandula_angustifolia_1.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Daisy",
+        "latin_name": "Bellis perennis",
+        "family": "Asteraceae",
+        "genus": "Bellis",
+        "species": "B. perennis",
+        "common_names": "Common Daisy",
+        "description": "Low-growing perennial with white petals and yellow centers.",
+        "botanical_description": "Small perennial herb with basal rosettes of leaves and solitary flower heads.",
+        "category": "flower",
+        "plant_type": "perennial",
+        "growth_habit": "rosette",
+        "native_region": "Europe",
+        "height_min_cm": 5,
+        "height_max_cm": 20,
+        "width_min_cm": 5,
+        "width_max_cm": 20,
+        "bloom_time": "spring-summer",
+        "flower_color": "white with yellow center",
+        "leaf_characteristics": {
+            "shape": "spoon-shaped",
+            "arrangement": "basal",
+            "margin": "toothed"
+        },
+        "flower_characteristics": {
+            "type": "composite",
+            "diameter_cm": 2,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "achene",
+            "edibility": "not edible"
+        },
+        "bark_type": null,
+        "foliage_type": "evergreen",
+        "is_edible": false,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed",
+            "division"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/76/Bellis_perennis_white_(aka).jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/7/76/Bellis_perennis_white_(aka).jpg",
+            null
+        ]
+    }
+]

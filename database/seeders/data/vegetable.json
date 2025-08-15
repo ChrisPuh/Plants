@@ -1,0 +1,233 @@
+[
+    {
+        "name": "Carrot",
+        "latin_name": "Daucus carota subsp. sativus",
+        "family": "Apiaceae",
+        "genus": "Daucus",
+        "species": "D. carota",
+        "common_names": "Carrot",
+        "description": "Root vegetable, usually orange, crisp in texture, and sweet in taste.",
+        "botanical_description": "Biennial plant grown for its edible taproot, with finely divided leaves and umbels of small white flowers.",
+        "category": "vegetable",
+        "plant_type": "biennial",
+        "growth_habit": "rosette",
+        "native_region": "Persia",
+        "height_min_cm": 20,
+        "height_max_cm": 100,
+        "width_min_cm": 10,
+        "width_max_cm": 30,
+        "bloom_time": "summer (second year)",
+        "flower_color": "white",
+        "leaf_characteristics": {
+            "shape": "pinnate",
+            "arrangement": "alternate",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "umbel",
+            "diameter_cm": 5,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "schizocarp",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Carrots.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/4b/Carrots.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Tomato",
+        "latin_name": "Solanum lycopersicum",
+        "family": "Solanaceae",
+        "genus": "Solanum",
+        "species": "S. lycopersicum",
+        "common_names": "Tomato",
+        "description": "Widely cultivated fruit vegetable used fresh or cooked.",
+        "botanical_description": "Tender perennial grown as an annual, with hairy stems, pinnate leaves, and clusters of yellow flowers producing red berries.",
+        "category": "vegetable",
+        "plant_type": "perennial",
+        "growth_habit": "climbing",
+        "native_region": "South America",
+        "height_min_cm": 50,
+        "height_max_cm": 300,
+        "width_min_cm": 30,
+        "width_max_cm": 100,
+        "bloom_time": "summer",
+        "flower_color": "yellow",
+        "leaf_characteristics": {
+            "shape": "pinnate",
+            "arrangement": "alternate",
+            "margin": "lobed"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 1,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "berry",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": true,
+        "propagation_methods": [
+            "seed",
+            "cutting"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/8/89/Tomato_je.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Zucchini",
+        "latin_name": "Cucurbita pepo",
+        "family": "Cucurbitaceae",
+        "genus": "Cucurbita",
+        "species": "C. pepo",
+        "common_names": "Courgette",
+        "description": "Summer squash harvested when immature and tender.",
+        "botanical_description": "Annual vine with large lobed leaves, yellow flowers, and elongated green fruits.",
+        "category": "vegetable",
+        "plant_type": "annual",
+        "growth_habit": "spreading",
+        "native_region": "Central America",
+        "height_min_cm": 30,
+        "height_max_cm": 100,
+        "width_min_cm": 60,
+        "width_max_cm": 150,
+        "bloom_time": "summer",
+        "flower_color": "yellow",
+        "leaf_characteristics": {
+            "shape": "lobed",
+            "arrangement": "alternate",
+            "margin": "serrated"
+        },
+        "flower_characteristics": {
+            "type": "unisex",
+            "diameter_cm": 8,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "pepo",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4a/Zucchini.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/4a/Zucchini.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Lettuce",
+        "latin_name": "Lactuca sativa",
+        "family": "Asteraceae",
+        "genus": "Lactuca",
+        "species": "L. sativa",
+        "common_names": "Lettuce",
+        "description": "Leafy vegetable eaten fresh in salads.",
+        "botanical_description": "Annual plant with a rosette of leaves and a flowering stem producing small yellow flowers.",
+        "category": "vegetable",
+        "plant_type": "annual",
+        "growth_habit": "rosette",
+        "native_region": "Mediterranean",
+        "height_min_cm": 15,
+        "height_max_cm": 100,
+        "width_min_cm": 20,
+        "width_max_cm": 40,
+        "bloom_time": "summer",
+        "flower_color": "yellow",
+        "leaf_characteristics": {
+            "shape": "varied",
+            "arrangement": "rosette",
+            "margin": "smooth or frilled"
+        },
+        "flower_characteristics": {
+            "type": "head",
+            "diameter_cm": 1,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "achene",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/49/Lettuce_Mini_Green.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/4/49/Lettuce_Mini_Green.jpg",
+            null
+        ]
+    },
+    {
+        "name": "Broccoli",
+        "latin_name": "Brassica oleracea var. italica",
+        "family": "Brassicaceae",
+        "genus": "Brassica",
+        "species": "B. oleracea",
+        "common_names": "Broccoli",
+        "description": "Green vegetable known for its edible flower heads and stalks.",
+        "botanical_description": "Annual or biennial plant with thick stalks and dense clusters of green flower buds.",
+        "category": "vegetable",
+        "plant_type": "annual",
+        "growth_habit": "upright",
+        "native_region": "Mediterranean",
+        "height_min_cm": 30,
+        "height_max_cm": 90,
+        "width_min_cm": 30,
+        "width_max_cm": 60,
+        "bloom_time": "spring",
+        "flower_color": "yellow",
+        "leaf_characteristics": {
+            "shape": "lobed",
+            "arrangement": "alternate",
+            "margin": "wavy"
+        },
+        "flower_characteristics": {
+            "type": "cluster",
+            "diameter_cm": 0.5,
+            "fragrance": false
+        },
+        "fruit_characteristics": {
+            "type": "silique",
+            "edibility": "edible"
+        },
+        "bark_type": null,
+        "foliage_type": "deciduous",
+        "is_edible": true,
+        "is_toxic": false,
+        "propagation_methods": [
+            "seed"
+        ],
+        "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/03/Broccoli_and_cross_section_edit.jpg",
+        "images": [
+            "https://upload.wikimedia.org/wikipedia/commons/0/03/Broccoli_and_cross_section_edit.jpg",
+            null
+        ]
+    }
+]
