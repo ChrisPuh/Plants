@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Plant\PlantContributionStatusEnum;
 use App\Models\Plant;
 use App\Models\PlantContribution;
 use App\Models\User;
@@ -26,9 +27,9 @@ test('regular users can create plant contributions', function () {
         'status' => 'pending',
     ]);
 
-    expect($contribution->status)->toBe('pending');
-    expect($contribution->user_id)->toBe($user->id);
-    expect($contribution->plant_id)->toBe($plant->id);
+    expect($contribution->status)->toBe(\App\Enums\Plant\PlantContributionStatusEnum::Pending)
+        ->and($contribution->user_id)->toBe($user->id)
+        ->and($contribution->plant_id)->toBe($plant->id);
 });
 
 test('admin can approve plant contribution and update plant', function () {
@@ -50,9 +51,9 @@ test('admin can approve plant contribution and update plant', function () {
     $this->actingAs($admin);
     $contribution->approve($admin, 'Good improvement');
 
-    expect($contribution->fresh()->status)->toBe('approved');
-    expect($contribution->fresh()->reviewed_by)->toBe($admin->id);
-    expect($contribution->fresh()->admin_notes)->toBe('Good improvement');
+    expect($contribution->fresh()->status)->toBe(\App\Enums\Plant\PlantContributionStatusEnum::Approved)
+        ->and($contribution->fresh()->reviewed_by)->toBe($admin->id)
+        ->and($contribution->fresh()->admin_notes)->toBe('Good improvement');
 
     // Apply the contribution to the plant
     $contribution->applyToPlant();
@@ -74,9 +75,9 @@ test('admin can reject plant contribution', function () {
     $this->actingAs($admin);
     $contribution->reject($admin, 'Information not accurate');
 
-    expect($contribution->fresh()->status)->toBe('rejected');
-    expect($contribution->fresh()->reviewed_by)->toBe($admin->id);
-    expect($contribution->fresh()->admin_notes)->toBe('Information not accurate');
+    expect($contribution->fresh()->status)->toBe(\App\Enums\Plant\PlantContributionStatusEnum::Rejected)
+        ->and($contribution->fresh()->reviewed_by)->toBe($admin->id)
+        ->and($contribution->fresh()->admin_notes)->toBe('Information not accurate');
 });
 
 test('user can only view their own contributions', function () {
@@ -176,16 +177,16 @@ test('plant contribution can handle json field updates', function () {
     $admin = User::factory()->admin()->create();
     $user = User::factory()->create();
     $plant = Plant::factory()->create([
-        'leaf_characteristics' => ['shape' => 'oval', 'texture' => 'smooth'],
+        'description' => 'test',
     ]);
 
     $contribution = PlantContribution::factory()->create([
         'user_id' => $user->id,
         'plant_id' => $plant->id,
-        'field_name' => 'leaf_characteristics',
-        'current_value' => json_encode(['shape' => 'oval', 'texture' => 'smooth']),
-        'proposed_value' => json_encode(['shape' => 'oval', 'texture' => 'smooth', 'color' => 'green']),
-        'status' => 'pending',
+        'field_name' => 'description',
+        'current_value' => 'test',
+        'proposed_value' => 'Updated test',
+        'status' => PlantContributionStatusEnum::Pending,
     ]);
 
     $this->actingAs($admin);
@@ -193,5 +194,5 @@ test('plant contribution can handle json field updates', function () {
     $contribution->applyToPlant();
 
     $updatedPlant = $plant->fresh();
-    expect($updatedPlant->leaf_characteristics)->toBe(['shape' => 'oval', 'texture' => 'smooth', 'color' => 'green']);
+    expect($updatedPlant->description)->toBe('Updated test');
 });

@@ -108,7 +108,7 @@ describe('Plant Routes', function () {
 
     describe('plants.edit', function () {
         it('can be accessed by admin users only', function () {
-            $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
+            $admin = User::factory()->admin()->create();
             $plant = Plant::factory()->create();
 
             $this->actingAs($admin)

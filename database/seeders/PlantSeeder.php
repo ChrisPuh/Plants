@@ -32,7 +32,14 @@ class PlantSeeder extends Seeder
             }
 
             foreach ($plants as $plantData) {
-                Plant::create($plantData);
+                Plant::create([
+                    'name' => $plantData['name'] ?? null,
+                    'latin_name' => $plantData['latin_name'] ?? null,
+                    'description' => $plantData['description'] ?? null,
+                    'category' => $plantData['category'] ?? null,
+                    'plant_type' => $plantData['plant_type'] ?? null,
+                    'image_url' => $plantData['image_url'] ?? null,
+                ]);
             }
 
             $this->command->info("✅ Datei {$file->getFilename()} erfolgreich gesendet.");

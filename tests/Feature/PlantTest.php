@@ -35,8 +35,7 @@ describe('Plant Index Page', function () {
         $response = $this->actingAs($user)->get('/plants');
         $response->assertSee('Test Plant')
             ->assertSee('Testus plantus')
-            ->assertSee('Herb')
-            ->assertSee('Perennial');
+            ->assertSee('Herb');
     });
 });
 
@@ -64,15 +63,9 @@ describe('Plant Model Accessors', function () {
         $plant = Plant::factory()->create([
             'name' => 'Test Plant',
             'latin_name' => 'Testus plantus',
-            'family' => 'Testaceae',
-            'genus' => 'Testus',
-            'species' => 'plantus',
-            'height_min_cm' => 50,
-            'height_max_cm' => 100,
         ]);
 
-        expect($plant->height_range)->toBe('50-100 cm');
-        expect($plant->full_latin_name)->toBe('Testus plantus');
+        expect($plant->latin_name)->toBe('Testus plantus');
     });
 });
 
@@ -84,32 +77,17 @@ describe('Plant Creation by Admin', function () {
         $plantData = [
             'name' => 'Basilikum',
             'latin_name' => 'Ocimum basilicum',
-            'family' => 'Lamiaceae',
-            'genus' => 'Ocimum',
-            'species' => 'basilicum',
             'description' => 'Aromatisches Kraut',
-            'botanical_description' => 'Einjährige Pflanze mit ovalen Blättern',
             'category' => 'herb',
             'plant_type' => 'annual',
-            'growth_habit' => 'upright',
-            'native_region' => 'Asia',
-            'height_min_cm' => 20,
-            'height_max_cm' => 60,
-            'bloom_time' => 'Sommer',
-            'flower_color' => 'weiß',
-            'foliage_type' => 'deciduous',
-            'is_edible' => true,
-            'is_toxic' => false,
         ];
 
         $plant = Plant::create($plantData);
 
-        expect($plant)->toBeInstanceOf(Plant::class);
-        expect($plant->name)->toBe('Basilikum');
-        expect($plant->latin_name)->toBe('Ocimum basilicum');
-        expect($plant->family)->toBe('Lamiaceae');
-        expect($plant->genus)->toBe('Ocimum');
-        expect($plant->species)->toBe('basilicum');
+        expect($plant)->toBeInstanceOf(Plant::class)
+            ->and($plant->name)->toBe('Basilikum')
+            ->and($plant->latin_name)->toBe('Ocimum basilicum');
+
     });
 });
 

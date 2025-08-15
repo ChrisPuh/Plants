@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\Plant\PlantContributionStatusEnum;
 use App\Models\Plant;
 use App\Models\PlantContribution;
 use App\Models\PlantRequest;
@@ -122,7 +123,7 @@ test('admin can approve contribution from dashboard', function () {
 
     // Verify contribution was approved
     $contribution->refresh();
-    expect($contribution->status)->toBe('approved');
+    expect($contribution->status)->toBe(PlantContributionStatusEnum::Approved);
     expect($contribution->reviewed_by)->toBe($admin->id);
 
     // Verify plant was updated
@@ -147,8 +148,8 @@ test('admin can reject contribution from dashboard', function () {
 
     // Verify contribution was rejected
     $contribution->refresh();
-    expect($contribution->status)->toBe('rejected');
-    expect($contribution->reviewed_by)->toBe($admin->id);
+    expect($contribution->status)->toBe(PlantContributionStatusEnum::Rejected)
+        ->and($contribution->reviewed_by)->toBe($admin->id);
 });
 
 test('admin dashboard shows task counts', function () {

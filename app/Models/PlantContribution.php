@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Plant\PlantContributionStatusEnum;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -30,6 +31,13 @@ class PlantContribution extends Model
     protected function casts(): array
     {
         return [
+            'user_id' => 'integer',
+            'plant_id' => 'integer',
+            'field_name' => 'string',
+            'current_value' => 'string',
+            'proposed_value' => 'string',
+            'reason' => 'string',
+            'status' => PlantContributionStatusEnum::class,
             'reviewed_at' => 'datetime',
         ];
     }
@@ -49,7 +57,7 @@ class PlantContribution extends Model
                 'fruit_characteristics', 'images',
             ];
 
-            if (! in_array($contribution->field_name, $validFieldNames)) {
+            if (!in_array($contribution->field_name, $validFieldNames)) {
                 throw new \InvalidArgumentException("Invalid field name: {$contribution->field_name}");
             }
         });
@@ -72,23 +80,23 @@ class PlantContribution extends Model
 
     public function isPending(): bool
     {
-        return $this->status === 'pending';
+        return $this->status === PlantContributionStatusEnum::Pending;
     }
 
     public function isApproved(): bool
     {
-        return $this->status === 'approved';
+        return $this->status === PlantContributionStatusEnum::Approved;
     }
 
     public function isRejected(): bool
     {
-        return $this->status === 'rejected';
+        return $this->status === PlantContributionStatusEnum::Rejected;
     }
 
     public function approve(User $admin, ?string $notes = null): void
     {
         $this->update([
-            'status' => 'approved',
+            'status' => PlantContributionStatusEnum::Approved,
             'reviewed_by' => $admin->id,
             'reviewed_at' => now(),
             'admin_notes' => $notes,
@@ -98,16 +106,19 @@ class PlantContribution extends Model
     public function reject(User $admin, ?string $notes = null): void
     {
         $this->update([
-            'status' => 'rejected',
+            'status' => PlantContributionStatusEnum::Rejected,
             'reviewed_by' => $admin->id,
             'reviewed_at' => now(),
             'admin_notes' => $notes,
         ]);
     }
 
+    /**
+     * @throws \Exception
+     */
     public function applyToPlant(): void
     {
-        if (! $this->isApproved()) {
+        if (!$this->isApproved()) {
             throw new \Exception('Contribution must be approved before applying to plant');
         }
 
@@ -129,15 +140,9 @@ class PlantContribution extends Model
         return match ($this->field_name) {
             'name' => 'Name',
             'latin_name' => 'Lateinischer Name',
-            'family' => 'Familie',
-            'genus' => 'Gattung',
-            'species' => 'Art',
             'description' => 'Beschreibung',
-            'botanical_description' => 'Botanische Beschreibung',
             'category' => 'Kategorie',
-            'native_region' => 'Herkunftsregion',
-            'flower_color' => 'Blütenfarbe',
-            'bloom_time' => 'Blütezeit',
+
             default => ucfirst(str_replace('_', ' ', $this->field_name)),
         };
     }

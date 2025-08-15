@@ -1,11 +1,11 @@
 <?php
 
+use App\Enums\Plant\PlantContributionStatusEnum;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('current_value')->nullable(); // Current value in database
             $table->text('proposed_value'); // Proposed new value
             $table->text('reason')->nullable(); // Why this change should be made
-            $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending');
+            $table->enum('status', PlantContributionStatusEnum::values())->default('pending');
             $table->text('admin_notes')->nullable();
             $table->foreignId('reviewed_by')->nullable()->constrained('users')->onDelete('set null');
             $table->timestamp('reviewed_at')->nullable();

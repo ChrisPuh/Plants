@@ -83,7 +83,7 @@ new class extends Component {
                     <flux:select wire:model.live="category">
                         <option value="">Alle Kategorien</option>
                         @foreach($categories as $cat)
-                            <option value="{{ $cat }}">{{ ucfirst($cat) }}</option>
+                            <option value="{{ $cat }}">{{ ucfirst($cat->label()) }}</option>
                         @endforeach
                     </flux:select>
                 </flux:field>
@@ -93,7 +93,7 @@ new class extends Component {
                     <flux:select wire:model.live="plantType">
                         <option value="">Alle Typen</option>
                         @foreach($plantTypes as $type)
-                            <option value="{{ $type }}">{{ ucfirst($type) }}</option>
+                            <option value="{{ $type }}">{{ ucfirst($type->label()) }}</option>
                         @endforeach
                     </flux:select>
                 </flux:field>
@@ -122,11 +122,11 @@ new class extends Component {
                         <div class="flex flex-wrap gap-1 mb-3">
                             @if($plant->category)
                                 <flux:badge size="sm"
-                                            variant="outline">{{ ucfirst($plant->category) }}</flux:badge>
+                                            variant="outline">{{ ucfirst($plant->category->label()) }}</flux:badge>
                             @endif
                             @if($plant->plant_type)
                                 <flux:badge size="sm"
-                                            variant="outline">{{ ucfirst($plant->plant_type) }}</flux:badge>
+                                            variant="outline">{{ ucfirst($plant->plant_type->label()) }}</flux:badge>
                             @endif
                         </div>
 
