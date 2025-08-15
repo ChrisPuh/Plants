@@ -18,7 +18,7 @@ $sizeClasses = match($size) {
 $initials = '';
 if ($plant->name) {
     $words = explode(' ', trim($plant->name));
-    $initials = count($words) >= 2 
+    $initials = count($words) >= 2
         ? strtoupper(substr($words[0], 0, 1) . substr($words[1], 0, 1))
         : strtoupper(substr($plant->name, 0, 2));
 }
@@ -28,9 +28,9 @@ $bgColor = $plant->name ? 'bg-' . ['emerald', 'green', 'lime', 'teal', 'cyan', '
 
 <div {{ $attributes->merge(['class' => "relative inline-block {$sizeClasses} rounded-lg overflow-hidden bg-gray-100 dark:bg-gray-800"]) }}>
     @if($plant->image_url)
-        <img 
-            class="h-full w-full object-cover" 
-            src="{{ $plant->image_url }}" 
+        <img
+            class="h-full w-full object-cover"
+            src="{{ $plant->image_url }}"
             alt="{{ $plant->name }}"
             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
         />
@@ -65,21 +65,6 @@ $bgColor = $plant->name ? 'bg-' . ['emerald', 'green', 'lime', 'teal', 'cyan', '
                 @if($showName && $plant->name)
                     <div class="text-xs mt-2 text-center px-2 opacity-90">{{ Str::limit($plant->name, 15) }}</div>
                 @endif
-            @endif
-        </div>
-    @endif
-    
-    @if($plant->is_edible || $plant->is_toxic)
-        <div class="absolute top-1 right-1 flex gap-1">
-            @if($plant->is_edible)
-                <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-green-100 text-green-800 text-xs font-medium" title="Essbar">
-                    🍃
-                </span>
-            @endif
-            @if($plant->is_toxic)
-                <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-red-100 text-red-800 text-xs font-medium" title="Giftig">
-                    ⚠️
-                </span>
             @endif
         </div>
     @endif

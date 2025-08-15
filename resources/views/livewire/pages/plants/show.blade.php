@@ -13,85 +13,166 @@ new class extends Component {
 }; ?>
 
 <div>
-    <div class="py-8">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <!-- Header -->
-            <div class="mb-8">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h1 class="text-3xl font-bold text-gray-900">{{ $plant->name }}</h1>
-                        @if($plant->latin_name)
-                            <p class="text-xl text-gray-600 italic mt-1">{{ $plant->latin_name }}</p>
-                        @endif
-                    </div>
+    <x-plants.layout :show-navigation="false">
+        @if (session()->has('message'))
+            <x-alert type="success" class="mb-6">
+                {{ session('message') }}
+            </x-alert>
+        @endif
 
-                    <div class="flex gap-2">
-                        @can('update', $plant)
-                            <a href="{{ route('plants.edit', $plant) }}"
-                               class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-                                Bearbeiten
-                            </a>
-                        @endcan
+        <!-- Header -->
+        <div class="mb-8">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4">
+                <div class="flex-1">
+                    <h1 class="text-4xl font-bold text-text-primary">{{ $plant->name }}</h1>
+                    @if($plant->latin_name)
+                        <p class="text-xl text-text-secondary italic mt-2">{{ $plant->latin_name }}</p>
+                    @endif
+                </div>
 
-                        <a href="{{ route('plants.index') }}"
-                           class="px-4 py-2 border border-gray-300 rounded-md text-gray-700 hover:bg-gray-50">
-                            Zurück zur Liste
+                <div class="flex flex-wrap gap-2">
+                    @can('update', $plant)
+                        <a href="{{ route('plants.edit', $plant) }}" class="btn-primary">
+                            Bearbeiten
                         </a>
+                    @endcan
+
+                    @cannot('update', $plant)
+                        <a href="{{ route('plants.request') }}" class="btn-secondary">
+                            Verbesserung vorschlagen
+                        </a>
+                    @endcannot
+
+                    <a href="{{ route('plants.index') }}" class="btn-secondary">
+                        Zurück zur Liste
+                    </a>
+                </div>
+            </div>
+
+            <!-- Badges -->
+            @if($plant->category || $plant->plant_type)
+                <div class="flex flex-wrap gap-2 mt-6">
+                    @if($plant->category)
+                        <span class="badge badge-primary">
+                            {{ $plant->category->label() }}
+                        </span>
+                    @endif
+                    @if($plant->plant_type)
+                        <span class="badge badge-success">
+                            {{ $plant->plant_type->label() }}
+                        </span>
+                    @endif
+                </div>
+            @endif
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Main Content -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Image -->
+                <div class="card p-6">
+                    <h3 class="text-lg font-medium mb-4">Bild</h3>
+                    <div class="flex justify-center">
+                        <x-plants.image :plant="$plant" size="xl" show-name="false" class="max-w-full" />
                     </div>
                 </div>
 
-                <!-- Badges -->
-                <div class="flex flex-wrap gap-2 mt-4">
-                    @if($plant->category)
-                        <span
-                            class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">{{ ucfirst($plant->category->label()) }}</span>
-                    @endif
-                    @if($plant->plant_type)
-                        <span
-                            class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">{{ ucfirst($plant->plant_type->label()) }}</span>
+                <!-- Description -->
+                <div class="card p-6">
+                    <h3 class="text-lg font-medium mb-4">Beschreibung</h3>
+                    @if($plant->description)
+                        <p class="text-text-secondary leading-relaxed">{{ $plant->description }}</p>
+                    @else
+                        <div class="text-center py-8">
+                            <p class="text-text-muted mb-4">Noch keine Beschreibung vorhanden.</p>
+                            @cannot('update', $plant)
+                                <p class="text-sm text-text-muted mb-4">Helfen Sie mit und schlagen Sie eine Beschreibung vor!</p>
+                                <a href="{{ route('plants.request') }}" class="btn-secondary">
+                                    Beschreibung vorschlagen
+                                </a>
+                            @endcannot
+                        </div>
                     @endif
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Main Content -->
-                <div class="lg:col-span-2 space-y-6">
-                    <!-- Image -->
-                    @if($plant->image_url)
-                        <div class="bg-white rounded-lg shadow overflow-hidden">
-                            <img src="{{ $plant->image_url }}" alt="{{ $plant->name }}"
-                                 class="w-full h-64 object-cover">
+            <!-- Sidebar -->
+            <div class="space-y-6">
+                <!-- Basic Info -->
+                <div class="card p-6">
+                    <h3 class="text-lg font-medium mb-4">Grundinformationen</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <span class="text-sm font-medium text-text-secondary">Name:</span>
+                            <p class="text-text-primary">{{ $plant->name }}</p>
                         </div>
-                    @endif
+                        @if($plant->latin_name)
+                            <div>
+                                <span class="text-sm font-medium text-text-secondary">Lateinischer Name:</span>
+                                <p class="text-text-primary italic">{{ $plant->latin_name }}</p>
+                            </div>
+                        @else
+                            <div>
+                                <span class="text-sm font-medium text-text-muted">Lateinischer Name:</span>
+                                <p class="text-text-muted text-sm">Noch nicht erfasst</p>
+                                @cannot('update', $plant)
+                                    <a href="{{ route('plants.request') }}" class="text-xs text-primary-600 hover:text-primary-700">
+                                        → Ergänzen vorschlagen
+                                    </a>
+                                @endcannot
+                            </div>
+                        @endif
 
-                    <!-- Descriptions -->
-                    @if($plant->description)
-                        <div class="bg-white rounded-lg shadow p-6">
-                            <h3 class="text-lg font-medium mb-3">Beschreibung</h3>
-                            <p class="text-gray-700">{{ $plant->description }}</p>
-                        </div>
-                    @endif
+                        @if($plant->category)
+                            <div>
+                                <span class="text-sm font-medium text-text-secondary">Kategorie:</span>
+                                <p class="text-text-primary">{{ $plant->category->label() }}</p>
+                            </div>
+                        @else
+                            <div>
+                                <span class="text-sm font-medium text-text-muted">Kategorie:</span>
+                                <p class="text-text-muted text-sm">Noch nicht erfasst</p>
+                                @cannot('update', $plant)
+                                    <a href="{{ route('plants.request') }}" class="text-xs text-primary-600 hover:text-primary-700">
+                                        → Ergänzen vorschlagen
+                                    </a>
+                                @endcannot
+                            </div>
+                        @endif
+
+                        @if($plant->plant_type)
+                            <div>
+                                <span class="text-sm font-medium text-text-secondary">Pflanzentyp:</span>
+                                <p class="text-text-primary">{{ $plant->plant_type->label() }}</p>
+                            </div>
+                        @else
+                            <div>
+                                <span class="text-sm font-medium text-text-muted">Pflanzentyp:</span>
+                                <p class="text-text-muted text-sm">Noch nicht erfasst</p>
+                                @cannot('update', $plant)
+                                    <a href="{{ route('plants.request') }}" class="text-xs text-primary-600 hover:text-primary-700">
+                                        → Ergänzen vorschlagen
+                                    </a>
+                                @endcannot
+                            </div>
+                        @endif
+                    </div>
                 </div>
 
-                <!-- Sidebar -->
-                <div class="space-y-6">
-                    <!-- Botanical Info -->
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <h3 class="text-lg font-medium mb-4">Botanische Information ( wird noch implementiert )</h3>
-                        <div class="space-y-3">
-
-                        </div>
-                    </div>
-
-                    <!-- Growth Info -->
-                    <div class="bg-white rounded-lg shadow p-6">
-                        <h3 class="text-lg font-medium mb-4">Wachstumsinformationen ( wird noch implementiert )</h3>
-                        <div class="space-y-3">
-
-                        </div>
+                <!-- Botanical Details (Future Feature) -->
+                <div class="card p-6">
+                    <h3 class="text-lg font-medium mb-4">Botanische Details</h3>
+                    <div class="text-center py-8">
+                        <p class="text-text-muted mb-4">Erweiterte botanische Informationen werden in einer zukünftigen Version hinzugefügt.</p>
+                        @cannot('update', $plant)
+                            <p class="text-sm text-text-muted">Haben Sie botanische Informationen zu dieser Pflanze?</p>
+                            <a href="{{ route('plants.request') }}" class="btn-secondary mt-3">
+                                Daten beitragen
+                            </a>
+                        @endcannot
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </x-plants.layout>
 </div>

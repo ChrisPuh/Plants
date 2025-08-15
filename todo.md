@@ -1,14 +1,14 @@
 ## Layout
-- [ ] implemntiere weiter dein layout. 
-- [ ] das Layout sollte einheitlich sein, also überall gleich aussehen
-- [ ] das Layout sollte modern sein, also nicht altbacken aussehen
-- [ ] das Layout sollte ansprechend sein, also gut aussehen
-- [ ] das Layout sollte übersichtlich sein, also nicht zu viele Informationen auf einmal anzeigen
-- [ ] layout sollte ein theme haben, also einheitlich aussehen (gerne mit emerald touch)
-- [ ] theme in app.css machen und so dass auch flux components es nutzen können
-- [ ] realworld them mit typischen benennungen (primary color, secondary color, etc.) und nicht mit flux themen
-- [ ] dark mode sollte unterstützt werden
-- [ ] das Layout sollte responsive sein, also auf mobilen Geräten gut aussehen
+- [x] implemntiere weiter dein layout. 
+- [x] das Layout sollte einheitlich sein, also überall gleich aussehen
+- [x] das Layout sollte modern sein, also nicht altbacken aussehen
+- [x] das Layout sollte ansprechend sein, also gut aussehen
+- [x] das Layout sollte übersichtlich sein, also nicht zu viele Informationen auf einmal anzeigen
+- [x] layout sollte ein theme haben, also einheitlich aussehen (gerne mit emerald touch)
+- [x] theme in app.css machen und so dass auch flux components es nutzen können
+- [x] realworld them mit typischen benennungen (primary color, secondary color, etc.) und nicht mit flux themen
+- [x] dark mode sollte unterstützt werden
+- [x] das Layout sollte responsive sein, also auf mobilen Geräten gut aussehen
 - 
 
 ## Plant Requests

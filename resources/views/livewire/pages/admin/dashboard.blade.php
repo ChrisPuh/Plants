@@ -67,112 +67,106 @@ new class extends Component {
     }
 }; ?>
 
-<div class="py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Header -->
-        <div class="mb-8">
-            <flux:heading size="xl">Admin Dashboard</flux:heading>
-            <p class="mt-1 text-sm text-zinc-500">Verwalten Sie Plant Requests und Contributions</p>
-        </div>
+<div>
+    <x-plants.layout 
+        heading="Admin Dashboard" 
+        subheading="Verwalten Sie Plant Requests und Contributions"
+        :show-navigation="false">
 
         @if (session()->has('message'))
-            <div class="mb-6">
-                <flux:callout variant="success">
-                    {{ session('message') }}
-                </flux:callout>
-            </div>
+            <x-alert type="success" class="mb-6">
+                {{ session('message') }}
+            </x-alert>
         @endif
 
         <!-- Stats Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-            <div class="bg-white rounded-lg shadow p-6">
+            <div class="card p-6">
                 <div class="flex items-center">
                     <div class="flex-1">
-                        <h3 class="text-lg font-medium text-zinc-900">Pending Plant Requests</h3>
-                        <p class="text-3xl font-bold text-blue-600">{{ $requestsCount }}</p>
+                        <h3 class="text-lg font-medium text-text-primary">Pending Plant Requests</h3>
+                        <p class="text-3xl font-bold text-info-600">{{ $requestsCount }}</p>
                     </div>
                     <div class="flex-shrink-0">
-                        <flux:badge size="lg" variant="{{ $requestsCount > 0 ? 'warning' : 'outline' }}">
+                        <span class="badge {{ $requestsCount > 0 ? 'badge-warning' : 'badge-success' }}">
                             {{ $requestsCount > 0 ? 'Needs Review' : 'All Clear' }}
-                        </flux:badge>
+                        </span>
                     </div>
                 </div>
             </div>
 
-            <div class="bg-white rounded-lg shadow p-6">
+            <div class="card p-6">
                 <div class="flex items-center">
                     <div class="flex-1">
-                        <h3 class="text-lg font-medium text-zinc-900">Pending Contributions</h3>
-                        <p class="text-3xl font-bold text-green-600">{{ $contributionsCount }}</p>
+                        <h3 class="text-lg font-medium text-text-primary">Pending Contributions</h3>
+                        <p class="text-3xl font-bold text-success-600">{{ $contributionsCount }}</p>
                     </div>
                     <div class="flex-shrink-0">
-                        <flux:badge size="lg" variant="{{ $contributionsCount > 0 ? 'warning' : 'outline' }}">
+                        <span class="badge {{ $contributionsCount > 0 ? 'badge-warning' : 'badge-success' }}">
                             {{ $contributionsCount > 0 ? 'Needs Review' : 'All Clear' }}
-                        </flux:badge>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
 
         @if($requestsCount == 0 && $contributionsCount == 0)
-            <div class="bg-white rounded-lg shadow p-8 text-center">
-                <h3 class="text-lg font-medium text-zinc-900 mb-2">Keine ausstehenden Aufgaben</h3>
-                <p class="text-zinc-500">Alle Plant Requests und Contributions wurden bearbeitet.</p>
+            <div class="card p-8 text-center">
+                <h3 class="text-lg font-medium text-text-primary mb-2">Keine ausstehenden Aufgaben</h3>
+                <p class="text-text-secondary">Alle Plant Requests und Contributions wurden bearbeitet.</p>
             </div>
         @else
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <!-- Plant Requests -->
-                <div class="bg-white rounded-lg shadow">
-                    <div class="px-6 py-4 border-b border-zinc-200">
-                        <h3 class="text-lg font-medium">Pending Plant Requests</h3>
+                <div class="card">
+                    <div class="px-6 py-4 border-b border-border">
+                        <h3 class="text-lg font-medium text-text-primary">Pending Plant Requests</h3>
                     </div>
 
-                    <div class="divide-y divide-zinc-200">
+                    <div class="divide-y divide-border">
                         @forelse($pendingRequests as $request)
                             <div class="p-6">
                                 <div class="flex justify-between items-start mb-3">
                                     <div>
-                                        <h4 class="font-semibold text-zinc-900">{{ $request->name }}</h4>
+                                        <h4 class="font-semibold text-text-primary">{{ $request->name }}</h4>
                                         @if($request->latin_name)
-                                            <p class="text-sm text-zinc-600 italic">{{ $request->latin_name }}</p>
+                                            <p class="text-sm text-text-secondary italic">{{ $request->latin_name }}</p>
                                         @endif
-                                        <p class="text-xs text-zinc-500 mt-1">
+                                        <p class="text-xs text-text-muted mt-1">
                                             von {{ $request->user->name }} • {{ $request->created_at->diffForHumans() }}
                                         </p>
                                     </div>
-                                    <flux:badge size="sm" variant="warning">Pending</flux:badge>
+                                    <span class="badge badge-warning text-xs">Pending</span>
                                 </div>
 
                                 @if($request->description)
-                                    <p class="text-sm text-zinc-600 mb-3">{{ Str::limit($request->description, 100) }}</p>
+                                    <p class="text-sm text-text-secondary mb-3">{{ Str::limit($request->description, 100) }}</p>
                                 @endif
 
-                                <div class="bg-zinc-50 rounded p-3 mb-4">
-                                    <h5 class="text-xs font-medium text-zinc-700 mb-1">Begründung:</h5>
-                                    <p class="text-sm text-zinc-600">{{ $request->reason }}</p>
+                                <div class="surface-secondary rounded p-3 mb-4">
+                                    <h5 class="text-xs font-medium text-text-secondary mb-1">Begründung:</h5>
+                                    <p class="text-sm text-text-primary">{{ $request->reason }}</p>
                                 </div>
 
                                 <div class="flex gap-2">
-                                    <flux:button
+                                    <button 
                                         wire:click="approveRequest({{ $request }})"
-                                        size="sm"
-                                        variant="primary"
                                         wire:confirm="Request genehmigen und Pflanze erstellen?"
+                                        class="btn-primary text-sm px-3 py-1.5"
                                     >
                                         Genehmigen
-                                    </flux:button>
-                                    <flux:button
+                                    </button>
+                                    <button 
                                         wire:click="rejectRequest({{ $request }})"
-                                        size="sm"
-                                        variant="danger"
                                         wire:confirm="Request ablehnen?"
+                                        class="btn-secondary text-sm px-3 py-1.5 !text-error-600 !border-error-200 hover:!bg-error-50"
                                     >
                                         Ablehnen
-                                    </flux:button>
+                                    </button>
                                 </div>
                             </div>
                         @empty
-                            <div class="p-6 text-center text-zinc-500">
+                            <div class="p-6 text-center text-text-muted">
                                 Keine pending Plant Requests
                             </div>
                         @endforelse
@@ -180,65 +174,63 @@ new class extends Component {
                 </div>
 
                 <!-- Plant Contributions -->
-                <div class="bg-white rounded-lg shadow">
-                    <div class="px-6 py-4 border-b border-zinc-200">
-                        <h3 class="text-lg font-medium">Pending Contributions</h3>
+                <div class="card">
+                    <div class="px-6 py-4 border-b border-border">
+                        <h3 class="text-lg font-medium text-text-primary">Pending Contributions</h3>
                     </div>
 
-                    <div class="divide-y divide-zinc-200">
+                    <div class="divide-y divide-border">
                         @forelse($pendingContributions as $contribution)
                             <div class="p-6">
                                 <div class="flex justify-between items-start mb-3">
                                     <div>
-                                        <h4 class="font-semibold text-zinc-900">{{ $contribution->plant->name }}</h4>
-                                        <p class="text-sm text-zinc-600">{{ $contribution->field_display_name }}</p>
-                                        <p class="text-xs text-zinc-500 mt-1">
+                                        <h4 class="font-semibold text-text-primary">{{ $contribution->plant->name }}</h4>
+                                        <p class="text-sm text-text-secondary">{{ $contribution->field_display_name }}</p>
+                                        <p class="text-xs text-text-muted mt-1">
                                             von {{ $contribution->user->name }}
                                             • {{ $contribution->created_at->diffForHumans() }}
                                         </p>
                                     </div>
-                                    <flux:badge size="sm" variant="warning">Pending</flux:badge>
+                                    <span class="badge badge-warning text-xs">Pending</span>
                                 </div>
 
                                 <div class="space-y-2 mb-4">
                                     <div>
-                                        <span class="text-xs font-medium text-zinc-500">Aktuell:</span>
-                                        <p class="text-sm text-zinc-700">{{ $contribution->current_value ?: 'Leer' }}</p>
+                                        <span class="text-xs font-medium text-text-secondary">Aktuell:</span>
+                                        <p class="text-sm text-text-primary">{{ $contribution->current_value ?: 'Leer' }}</p>
                                     </div>
                                     <div>
-                                        <span class="text-xs font-medium text-zinc-500">Vorgeschlagen:</span>
-                                        <p class="text-sm text-zinc-700">{{ $contribution->proposed_value }}</p>
+                                        <span class="text-xs font-medium text-text-secondary">Vorgeschlagen:</span>
+                                        <p class="text-sm text-text-primary">{{ $contribution->proposed_value }}</p>
                                     </div>
                                 </div>
 
                                 @if($contribution->reason)
-                                    <div class="bg-zinc-50 rounded p-3 mb-4">
-                                        <h5 class="text-xs font-medium text-zinc-700 mb-1">Begründung:</h5>
-                                        <p class="text-sm text-zinc-600">{{ $contribution->reason }}</p>
+                                    <div class="surface-secondary rounded p-3 mb-4">
+                                        <h5 class="text-xs font-medium text-text-secondary mb-1">Begründung:</h5>
+                                        <p class="text-sm text-text-primary">{{ $contribution->reason }}</p>
                                     </div>
                                 @endif
 
                                 <div class="flex gap-2">
-                                    <flux:button
+                                    <button 
                                         wire:click="approveContribution({{ $contribution }})"
-                                        size="sm"
-                                        variant="primary"
                                         wire:confirm="Contribution genehmigen und anwenden?"
+                                        class="btn-primary text-sm px-3 py-1.5"
                                     >
                                         Genehmigen
-                                    </flux:button>
-                                    <flux:button
+                                    </button>
+                                    <button 
                                         wire:click="rejectContribution({{ $contribution }})"
-                                        size="sm"
-                                        variant="danger"
                                         wire:confirm="Contribution ablehnen?"
+                                        class="btn-secondary text-sm px-3 py-1.5 !text-error-600 !border-error-200 hover:!bg-error-50"
                                     >
                                         Ablehnen
-                                    </flux:button>
+                                    </button>
                                 </div>
                             </div>
                         @empty
-                            <div class="p-6 text-center text-zinc-500">
+                            <div class="p-6 text-center text-text-muted">
                                 Keine pending Contributions
                             </div>
                         @endforelse
@@ -246,6 +238,6 @@ new class extends Component {
                 </div>
             </div>
         @endif
-    </div>
+    </x-plants.layout>
 </div>
 
