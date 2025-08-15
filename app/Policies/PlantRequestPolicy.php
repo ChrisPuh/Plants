@@ -12,7 +12,7 @@ class PlantRequestPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->isAdmin(); // Only admins can view all requests
+        return $user->role->isAdmin(); // Only admins can view all requests
     }
 
     /**
@@ -20,7 +20,7 @@ class PlantRequestPolicy
      */
     public function view(User $user, PlantRequest $plantRequest): bool
     {
-        return $user->isAdmin() || $user->id === $plantRequest->user_id;
+        return $user->role->isAdmin() || $user->id === $plantRequest->user_id;
     }
 
     /**
@@ -28,7 +28,7 @@ class PlantRequestPolicy
      */
     public function create(User $user): bool
     {
-        return ! $user->isAdmin(); // Only regular users can create requests, admins create plants directly
+        return ! $user->role->isAdmin(); // Only regular users can create requests, admins create plants directly
     }
 
     /**
@@ -36,7 +36,7 @@ class PlantRequestPolicy
      */
     public function update(User $user, PlantRequest $plantRequest): bool
     {
-        return $user->isAdmin(); // Only admins can approve/reject requests
+        return $user->role->isAdmin(); // Only admins can approve/reject requests
     }
 
     /**
@@ -44,7 +44,7 @@ class PlantRequestPolicy
      */
     public function delete(User $user, PlantRequest $plantRequest): bool
     {
-        return $user->isAdmin() || $user->id === $plantRequest->user_id;
+        return $user->role->isAdmin() || $user->id === $plantRequest->user_id;
     }
 
     /**

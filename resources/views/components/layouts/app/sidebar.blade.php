@@ -15,7 +15,7 @@
                 <flux:navlist.group :heading="__('Platform')" class="grid">
                     <flux:navlist.item icon="home" :href="route('dashboard')" :current="request()->routeIs('dashboard')" wire:navigate>{{ __('Dashboard') }}</flux:navlist.item>
                     <flux:navlist.item icon="layout-grid" :href="route('plants.index')" :current="request()->routeIs('plants.*')" wire:navigate>{{ __('Pflanzen') }}</flux:navlist.item>
-                    @if(auth()->user()->isAdmin())
+                    @if(auth()->user()->role->isAdmin())
                         <flux:navlist.item icon="cog" :href="route('admin.dashboard')" :current="request()->routeIs('admin.*')" wire:navigate>{{ __('Admin') }}</flux:navlist.item>
                     @endif
                 </flux:navlist.group>

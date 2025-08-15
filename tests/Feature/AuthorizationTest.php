@@ -1,23 +1,22 @@
 <?php
 
+use App\Enums\User\UserRoleEnum;
 use App\Models\Plant;
 use App\Models\PlantContribution;
 use App\Models\PlantRequest;
 use App\Models\User;
-use App\UserRole;
 
 test('user roles are correctly assigned', function () {
     $admin = User::factory()->admin()->create();
     $user = User::factory()->create();
 
-    expect($admin->role)->toBe(UserRole::Admin);
-    expect($user->role)->toBe(UserRole::User);
+    expect($admin->role)->toBe(UserRoleEnum::Admin)
+        ->and($user->role)->toBe(UserRoleEnum::User)
+        ->and($admin->role->isAdmin())->toBeTrue()
+        ->and($admin->role->isUser())->toBeFalse()
+        ->and($user->role->isAdmin())->toBeFalse()
+        ->and($user->role->isUser())->toBeTrue();
 
-    expect($admin->isAdmin())->toBeTrue();
-    expect($admin->isUser())->toBeFalse();
-
-    expect($user->isAdmin())->toBeFalse();
-    expect($user->isUser())->toBeTrue();
 });
 
 test('plant authorization works correctly', function () {
@@ -26,18 +25,18 @@ test('plant authorization works correctly', function () {
     $plant = Plant::factory()->create();
 
     // Admin can do everything
-    expect($admin->can('viewAny', Plant::class))->toBeTrue();
-    expect($admin->can('view', $plant))->toBeTrue();
-    expect($admin->can('create', Plant::class))->toBeTrue();
-    expect($admin->can('update', $plant))->toBeTrue();
-    expect($admin->can('delete', $plant))->toBeTrue();
+    expect($admin->can('viewAny', Plant::class))->toBeTrue()
+        ->and($admin->can('view', $plant))->toBeTrue()
+        ->and($admin->can('create', Plant::class))->toBeTrue()
+        ->and($admin->can('update', $plant))->toBeTrue()
+        ->and($admin->can('delete', $plant))->toBeTrue()
+        ->and($user->can('viewAny', Plant::class))->toBeTrue()
+        ->and($user->can('view', $plant))->toBeTrue()
+        ->and($user->can('create', Plant::class))->toBeFalse()
+        ->and($user->can('update', $plant))->toBeFalse()
+        ->and($user->can('delete', $plant))->toBeFalse();
 
     // User can only view
-    expect($user->can('viewAny', Plant::class))->toBeTrue();
-    expect($user->can('view', $plant))->toBeTrue();
-    expect($user->can('create', Plant::class))->toBeFalse();
-    expect($user->can('update', $plant))->toBeFalse();
-    expect($user->can('delete', $plant))->toBeFalse();
 });
 
 test('plant request authorization works correctly', function () {

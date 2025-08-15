@@ -1,9 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Enums\User;
+use App\Enums\Shared\Concerns\HasValues;
 
-enum UserRole: string
+enum UserRoleEnum: string
 {
+    use HasValues;
+
     case User = 'user';
     case Admin = 'admin';
 

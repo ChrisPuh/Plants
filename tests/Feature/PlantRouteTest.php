@@ -2,9 +2,11 @@
 
 declare(strict_types=1);
 
+use App\Enums\User\UserRoleEnum;
 use App\Models\Plant;
+use App\Models\PlantContribution;
+use App\Models\PlantRequest;
 use App\Models\User;
-use App\UserRole;
 
 describe('Plant Routes', function () {
     describe('plants.index', function () {
@@ -66,8 +68,8 @@ describe('Plant Routes', function () {
         });
 
         it('shows edit button only for admins', function () {
-            $admin = User::factory()->create(['role' => UserRole::Admin]);
-            $user = User::factory()->create(['role' => UserRole::User]);
+            $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
+            $user = User::factory()->create(['role' => UserRoleEnum::User]);
             $plant = Plant::factory()->create();
 
             $this->actingAs($admin)
@@ -82,7 +84,7 @@ describe('Plant Routes', function () {
 
     describe('plants.create', function () {
         it('can be accessed by admin users only', function () {
-            $admin = User::factory()->create(['role' => UserRole::Admin]);
+            $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
 
             $this->actingAs($admin)
                 ->get(route('plants.create'))
@@ -91,7 +93,7 @@ describe('Plant Routes', function () {
         });
 
         it('is forbidden for regular users', function () {
-            $user = User::factory()->create(['role' => UserRole::User]);
+            $user = User::factory()->create(['role' => UserRoleEnum::User]);
 
             $this->actingAs($user)
                 ->get(route('plants.create'))
@@ -106,7 +108,7 @@ describe('Plant Routes', function () {
 
     describe('plants.edit', function () {
         it('can be accessed by admin users only', function () {
-            $admin = User::factory()->create(['role' => UserRole::Admin]);
+            $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
             $plant = Plant::factory()->create();
 
             $this->actingAs($admin)
@@ -116,7 +118,7 @@ describe('Plant Routes', function () {
         });
 
         it('is forbidden for regular users', function () {
-            $user = User::factory()->create(['role' => UserRole::User]);
+            $user = User::factory()->create(['role' => UserRoleEnum::User]);
             $plant = Plant::factory()->create();
 
             $this->actingAs($user)
@@ -134,7 +136,7 @@ describe('Plant Routes', function () {
 
     describe('plants.request', function () {
         it('can be accessed by regular users', function () {
-            $user = User::factory()->create(['role' => UserRole::User]);
+            $user = User::factory()->create(['role' => UserRoleEnum::User]);
 
             $this->actingAs($user)
                 ->get(route('plants.request'))
@@ -143,7 +145,7 @@ describe('Plant Routes', function () {
         });
 
         it('is forbidden for admin users (they create plants directly)', function () {
-            $admin = User::factory()->create(['role' => UserRole::Admin]);
+            $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
 
             $this->actingAs($admin)
                 ->get(route('plants.request'))
@@ -160,7 +162,7 @@ describe('Plant Routes', function () {
 describe('Admin Dashboard Routes', function () {
     describe('admin.dashboard', function () {
         it('can be accessed by admin users only', function () {
-            $admin = User::factory()->create(['role' => UserRole::Admin]);
+            $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
 
             $this->actingAs($admin)
                 ->get(route('admin.dashboard'))
@@ -169,7 +171,7 @@ describe('Admin Dashboard Routes', function () {
         });
 
         it('is forbidden for regular users', function () {
-            $user = User::factory()->create(['role' => UserRole::User]);
+            $user = User::factory()->create(['role' => UserRoleEnum::User]);
 
             $this->actingAs($user)
                 ->get(route('admin.dashboard'))
@@ -182,17 +184,17 @@ describe('Admin Dashboard Routes', function () {
         });
 
         it('displays pending requests and contributions', function () {
-            $admin = User::factory()->create(['role' => UserRole::Admin]);
-            $user = User::factory()->create(['role' => UserRole::User]);
+            $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
+            $user = User::factory()->create(['role' => UserRoleEnum::User]);
 
             // Create test data
-            $plantRequest = \App\Models\PlantRequest::factory()->create([
+            $plantRequest = PlantRequest::factory()->create([
                 'user_id' => $user->id,
                 'status' => 'pending',
             ]);
 
             $plant = Plant::factory()->create();
-            $contribution = \App\Models\PlantContribution::factory()->create([
+            $contribution = PlantContribution::factory()->create([
                 'user_id' => $user->id,
                 'plant_id' => $plant->id,
                 'status' => 'pending',
@@ -208,8 +210,8 @@ describe('Admin Dashboard Routes', function () {
 
 describe('Route Authorization', function () {
     it('enforces plant policy for create routes', function () {
-        $user = User::factory()->create(['role' => UserRole::User]);
-        $admin = User::factory()->create(['role' => UserRole::Admin]);
+        $user = User::factory()->create(['role' => UserRoleEnum::User]);
+        $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
 
         // User should be denied
         $this->actingAs($user)
@@ -223,8 +225,8 @@ describe('Route Authorization', function () {
     });
 
     it('enforces plant policy for edit routes', function () {
-        $user = User::factory()->create(['role' => UserRole::User]);
-        $admin = User::factory()->create(['role' => UserRole::Admin]);
+        $user = User::factory()->create(['role' => UserRoleEnum::User]);
+        $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
         $plant = Plant::factory()->create();
 
         // User should be denied
@@ -239,8 +241,8 @@ describe('Route Authorization', function () {
     });
 
     it('enforces admin middleware on admin routes', function () {
-        $user = User::factory()->create(['role' => UserRole::User]);
-        $admin = User::factory()->create(['role' => UserRole::Admin]);
+        $user = User::factory()->create(['role' => UserRoleEnum::User]);
+        $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
 
         // User should be denied
         $this->actingAs($user)
@@ -254,8 +256,8 @@ describe('Route Authorization', function () {
     });
 
     it('allows all authenticated users to view plants', function () {
-        $user = User::factory()->create(['role' => UserRole::User]);
-        $admin = User::factory()->create(['role' => UserRole::Admin]);
+        $user = User::factory()->create(['role' => UserRoleEnum::User]);
+        $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
         $plant = Plant::factory()->create();
 
         // Both user types should be allowed
@@ -269,8 +271,8 @@ describe('Route Authorization', function () {
     });
 
     it('allows only regular users to request plants (admins create directly)', function () {
-        $user = User::factory()->create(['role' => UserRole::User]);
-        $admin = User::factory()->create(['role' => UserRole::Admin]);
+        $user = User::factory()->create(['role' => UserRoleEnum::User]);
+        $admin = User::factory()->create(['role' => UserRoleEnum::Admin]);
 
         // Regular users should be allowed
         $this->actingAs($user)

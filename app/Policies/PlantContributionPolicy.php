@@ -12,7 +12,7 @@ class PlantContributionPolicy
      */
     public function viewAny(User $user): bool
     {
-        return $user->isAdmin(); // Only admins can view all contributions
+        return $user->role->isAdmin(); // Only admins can view all contributions
     }
 
     /**
@@ -20,7 +20,7 @@ class PlantContributionPolicy
      */
     public function view(User $user, PlantContribution $plantContribution): bool
     {
-        return $user->isAdmin() || $user->id === $plantContribution->user_id;
+        return $user->role->isAdmin() || $user->id === $plantContribution->user_id;
     }
 
     /**
@@ -36,7 +36,7 @@ class PlantContributionPolicy
      */
     public function update(User $user, PlantContribution $plantContribution): bool
     {
-        return $user->isAdmin(); // Only admins can approve/reject contributions
+        return $user->role->isAdmin(); // Only admins can approve/reject contributions
     }
 
     /**
@@ -44,7 +44,7 @@ class PlantContributionPolicy
      */
     public function delete(User $user, PlantContribution $plantContribution): bool
     {
-        return $user->isAdmin() || $user->id === $plantContribution->user_id;
+        return $user->role->isAdmin() || $user->id === $plantContribution->user_id;
     }
 
     /**

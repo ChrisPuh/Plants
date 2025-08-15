@@ -3,15 +3,20 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use App\UserRole;
+use App\Enums\User\UserRoleEnum;
+use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
+/**
+ * @property int $id
+ * @property string $role
+ */
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
+    /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
 
     /**
@@ -46,7 +51,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'role' => UserRole::class,
+            'role' => UserRoleEnum::class,
         ];
     }
 
@@ -58,23 +63,7 @@ class User extends Authenticatable
         return Str::of($this->name)
             ->explode(' ')
             ->take(2)
-            ->map(fn ($word) => Str::substr($word, 0, 1))
+            ->map(fn($word) => Str::substr($word, 0, 1))
             ->implode('');
-    }
-
-    /**
-     * Check if the user is an admin
-     */
-    public function isAdmin(): bool
-    {
-        return $this->role === UserRole::Admin;
-    }
-
-    /**
-     * Check if the user is a regular user
-     */
-    public function isUser(): bool
-    {
-        return $this->role === UserRole::User;
     }
 }

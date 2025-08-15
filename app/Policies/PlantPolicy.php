@@ -28,7 +28,7 @@ class PlantPolicy
      */
     public function create(User $user): bool
     {
-        return $user->isAdmin(); // Only admins can create plants directly
+        return $user->role->isAdmin(); // Only admins can create plants directly
     }
 
     /**
@@ -36,7 +36,7 @@ class PlantPolicy
      */
     public function update(User $user, Plant $plant): bool
     {
-        return $user->isAdmin(); // Only admins can update plants directly
+        return $user->role->isAdmin(); // Only admins can update plants directly
     }
 
     /**
@@ -44,7 +44,7 @@ class PlantPolicy
      */
     public function delete(User $user, Plant $plant): bool
     {
-        return $user->isAdmin(); // Only admins can delete plants
+        return $user->role->isAdmin(); // Only admins can delete plants
     }
 
     /**
@@ -52,7 +52,7 @@ class PlantPolicy
      */
     public function restore(User $user, Plant $plant): bool
     {
-        return $user->isAdmin(); // Only admins can restore plants
+        return $user->role->isAdmin(); // Only admins can restore plants
     }
 
     /**
@@ -60,6 +60,6 @@ class PlantPolicy
      */
     public function forceDelete(User $user, Plant $plant): bool
     {
-        return $user->isAdmin(); // Only admins can force delete plants
+        return $user->role->isAdmin(); // Only admins can force delete plants
     }
 }
