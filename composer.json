@@ -1,0 +1,179 @@
+{
+    "$schema": "https://getcomposer.org/schema.json",
+    "name": "chrispuh/plant-database",
+    "type": "project",
+    "description": "Event Sourcing Plant Database with Laravel, Livewire & Spatie Event Sourcing",
+    "keywords": [
+        "laravel",
+        "event-sourcing",
+        "livewire",
+        "plant-database",
+        "domain-driven-design"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^12.24.0",
+        "laravel/tinker": "^2.10.1",
+        "livewire/flux": "^2.2.4",
+        "livewire/volt": "^1.7.2",
+        "spatie/laravel-event-sourcing": "^7.12.1"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.24.1",
+        "laravel/boost": "^1.0.17",
+        "laravel/pail": "^1.2.3",
+        "laravel/pint": "^1.24",
+        "laravel/sail": "^1.44",
+        "mockery/mockery": "^1.6.12",
+        "nunomaduro/collision": "^8.8.2",
+        "pestphp/pest": "^3.8.2",
+        "pestphp/pest-plugin-laravel": "^3.2",
+        "barryvdh/laravel-ide-helper": "^3.6",
+        "barryvdh/laravel-debugbar": "^3.16"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi",
+            "@php -r \"file_exists('database/database.sqlite') || touch('database/database.sqlite');\"",
+            "@php artisan migrate --graceful --ansi"
+        ],
+        "dev": [
+            "Composer\\Config::disableProcessTimeout",
+            "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
+        ],
+        "test": [
+            "@php artisan config:clear --ansi",
+            "pest"
+        ],
+        "test:unit": [
+            "pest tests/Unit --group=unit"
+        ],
+        "test:integration": [
+            "pest tests/Integration --group=integration"
+        ],
+        "test:feature": [
+            "pest tests/Feature --group=feature"
+        ],
+        "test:events": [
+            "pest tests/Unit/Domains --filter=Event"
+        ],
+        "test:coverage": [
+            "pest --coverage --min=80"
+        ],
+        "test:parallel": [
+            "pest --parallel"
+        ],
+        "test:watch": [
+            "pest --watch"
+        ],
+        "test-coverage": [
+            "pest --coverage --min=95"
+        ],
+        "test-unit": [
+            "pest tests/Unit"
+        ],
+        "test-feature": [
+            "pest tests/Feature"
+        ],
+        "format": [
+            "./vendor/bin/pint"
+        ],
+        "format-test": [
+            "./vendor/bin/pint --test"
+        ],
+        "ide-helper": [
+            "@php artisan clear-compiled",
+            "@php artisan ide-helper:generate",
+            "@php artisan ide-helper:meta",
+            "@php artisan ide-helper:models --nowrite"
+        ],
+        "fresh": [
+            "@php artisan migrate:fresh --seed"
+        ],
+        "quality": [
+            "@ide-helper",
+            "@format",
+            "@test"
+        ],
+        "pre-commit": [
+            "echo '🔍 Running pre-commit checks...'",
+            "@format-test",
+            "@test",
+            "echo '✅ All checks passed! Ready for commit.'"
+        ],
+        "pre-push": [
+            "echo '🚀 Running pre-push checks...'",
+            "@format",
+            "@test-coverage",
+            "npm run build",
+            "echo '✅ All checks passed! Ready for push.'"
+        ],
+        "setup": [
+            "composer install",
+            "@php artisan key:generate",
+            "@php artisan migrate:fresh --seed",
+            "@ide-helper",
+            "echo '🎉 Project setup complete!'"
+        ],
+        "dev-tools": [
+            "@php artisan vendor:publish --provider='Barryvdh\\Debugbar\\ServiceProvider'",
+            "@php artisan vendor:publish --provider='Barryvdh\\LaravelIdeHelper\\IdeHelperServiceProvider'",
+            "echo '🛠️ Development tools configured!'"
+        ],
+        "optimize": [
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache",
+            "@php artisan event:cache",
+            "echo '⚡ Application optimized for production!'"
+        ],
+        "build": [
+            "npm run build",
+            "echo '📦 Assets built successfully!'"
+        ],
+        "deploy": [
+            "@build",
+            "@optimize",
+            "echo '🚀 Ready for deployment!'"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
