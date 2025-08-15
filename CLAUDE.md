@@ -415,14 +415,35 @@ $delete = fn(Product $product) => $product->delete();
 - If you need to verify a feature is working, write or update a Unit / Feature test.
 
 ### Pest Tests
-- All tests must be written using Pest. Use `php artisan make:test --pest <name>`.
+- All tests must be written using Pest v3. Use `php artisan make:test --pest <name>`.
 - You must not remove any tests or test files from the tests directory without approval. These are not temporary or helper files - these are core to the application.
 - Tests should test all of the happy paths, failure paths, and weird paths.
 - Tests live in the `tests/Feature` and `tests/Unit` directories.
+- Group related tests using `describe()` blocks for better organization.
 - Pest tests look and behave like this:
 <code-snippet name="Basic Pest Test Example" lang="php">
-it('is true', function () {
-    expect(true)->toBeTrue();
+describe('User Authentication', function () {
+    it('can login with valid credentials', function () {
+        $user = User::factory()->create();
+        
+        $response = $this->post('/login', [
+            'email' => $user->email,
+            'password' => 'password',
+        ]);
+        
+        $response->assertRedirect('/dashboard');
+        expect(auth()->check())->toBeTrue();
+    });
+    
+    it('cannot login with invalid credentials', function () {
+        $response = $this->post('/login', [
+            'email' => 'wrong@example.com',
+            'password' => 'wrongpassword',
+        ]);
+        
+        $response->assertSessionHasErrors();
+        expect(auth()->check())->toBeFalse();
+    });
 });
 </code-snippet>
 
@@ -527,4 +548,34 @@ it('has emails', function (string $email) {
 
 - Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
 - Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test` with a specific filename or filter.
+
+## Event Sourcing Architecture
+
+This application is structured to support future Event Sourcing implementation. The groundwork has been laid with:
+
+### Event Sourcing Contracts
+- **Event Interface**: `App\Contracts\EventSourcing\Event` defines the structure for events
+- **EventStore Interface**: `App\Contracts\EventSourcing\EventStore` defines event persistence 
+- **Aggregate Interface**: `App\Contracts\EventSourcing\Aggregate` defines aggregate root behavior
+- **Repository Interface**: `App\Contracts\EventSourcing\Repository` defines aggregate loading/saving
+
+### Prepared Event Classes
+- **PlantCreated**: Event for when a new plant is created
+- **PlantUpdated**: Event for when plant information is modified
+- **PlantRequestSubmitted**: Event for when users submit plant requests
+- **PlantRequestApproved**: Event for when admins approve plant requests
+
+### Implementation Notes
+When implementing Event Sourcing:
+1. Events should be immutable and represent facts that have occurred
+2. Aggregates should be reconstituted from their event history
+3. The EventStore should persist events in order with proper versioning
+4. Consider implementing projections for read models
+5. Use event handlers for side effects and process managers for complex workflows
+
+The current application uses traditional CRUD operations but can be migrated to Event Sourcing by:
+1. Implementing the EventStore interface with database persistence
+2. Converting existing models to Aggregates that emit events
+3. Creating event handlers for updating read models
+4. Implementing proper event versioning and migration strategies
 </laravel-boost-guidelines>
